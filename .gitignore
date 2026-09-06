@@ -1,0 +1,27 @@
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Node / VS Code packaging
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.vsix
+.vscode-test/
+
+# Editor temporary files
+*.swp
+*.swo
+*~
+*.bak
+Session.vim
+.netrwhist
+
+# Build & scratch artifacts
+dist/
+build/
+out/
+tmp/
+.cache/
