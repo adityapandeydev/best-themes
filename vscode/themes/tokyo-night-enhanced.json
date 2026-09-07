@@ -8,35 +8,55 @@
     "parameter.declaration": "#e0687a",
     "variable": "#27c6d5",
     "variable.declaration": "#27c6d5",
-    "variable.readonly": "#c0768e",
-    "variable.readonly.static": "#c0768e",
-    "property.readonly": "#c0768e",
-    "property.readonly.static": "#c0768e",
-    "variable.readonly:java": "#c0768e",
-    "property.readonly:java": "#c0768e",
-    "variable.readonly:cpp": "#c0768e",
-    "property.readonly:cpp": "#c0768e",
-    "variable.readonly:c": "#c0768e",
-    "property.readonly:c": "#c0768e",
-    "variable.readonly:python": "#c0768e",
-    "property.readonly:python": "#c0768e",
-    "variable.readonly:rust": "#c0768e",
-    "property.readonly:rust": "#c0768e",
-    "variable.defaultLibrary": "#85d0b7",
-    "function": "#7aa2f7",
-    "method": "#7aa2f7",
-    "property": "#27c6d5",
-    "type": "#85d0b7",
+    "variable.readonly": "#e0af68",
+    "variable.readonly.static": "#e0af68",
+    "variable.readonly:java": "#e0af68",
+    "variable.readonly:cpp": "#e0af68",
+    "variable.readonly:c": "#e0af68",
+    "variable.readonly:python": "#e0af68",
+    "variable.readonly:rust": "#e0af68",
+    "variable.readonly:go": "#e0af68",
+    "variable.readonly:zig": "#e0af68",
+    "variable.constant": "#e0af68",
+    "variable.constant:rust": "#e0af68",
+    "variable.constant:go": "#e0af68",
+    "constant": "#e0af68",
+    "constant:rust": "#e0af68",
+    "constant:go": "#e0af68",
+    "property": "#e0af68",
+    "property.readonly": "#e0af68",
+    "property.readonly.static": "#e0af68",
+    "property:java": "#e0af68",
+    "property.readonly:java": "#e0af68",
+    "property.readonly.static:java": "#e0af68",
+    "property.readonly:cpp": "#e0af68",
+    "property.readonly:c": "#e0af68",
+    "property.readonly:python": "#e0af68",
+    "property.readonly:rust": "#e0af68",
+    "property.readonly:go": "#e0af68",
+    "variable.readonly:javascript": "#27c6d5",
+    "variable.readonly:typescript": "#27c6d5",
+    "variable.readonly:javascriptreact": "#27c6d5",
+    "variable.readonly:typescriptreact": "#27c6d5",
+    "property.readonly:javascript": "#27c6d5",
+    "property.readonly:typescript": "#27c6d5",
+    "property.readonly:javascriptreact": "#27c6d5",
+    "property.readonly:typescriptreact": "#27c6d5",
+    "variable.defaultLibrary": "#89ddff",
+    "type": "#89ddff",
     "type.defaultLibrary": "#bb9af7",
-    "class": "#85d0b7",
-    "struct": "#85d0b7",
-    "enum": "#85d0b7",
+    "class": "#89ddff",
+    "struct": "#89ddff",
+    "enum": "#89ddff",
+    "interface": "#89ddff",
     "enumMember": "#ff9e64",
     "enumMember:java": "#ff9e64",
     "enumMember:cpp": "#ff9e64",
     "enumMember:c": "#ff9e64",
     "enumMember:rust": "#ff9e64",
-    "interface": "#85d0b7",
+    "enumMember:go": "#ff9e64",
+    "function": "#7aa2f7",
+    "method": "#7aa2f7",
     "keyword": "#bb9af7",
     "keyword.control": "#bb9af7",
     "keyword.controlFlow": "#bb9af7",
@@ -47,19 +67,11 @@
     "selfKeyword": "#f7768e",
     "boolean": "#c0768e",
     "number": "#c0768e",
-    "string": "#89ddff",
+    "string": "#85d0b7",
     "comment": {
       "foreground": "#565f89",
       "fontStyle": "italic"
-    },
-    "variable.readonly:javascript": "#27c6d5",
-    "variable.readonly:typescript": "#27c6d5",
-    "variable.readonly:javascriptreact": "#27c6d5",
-    "variable.readonly:typescriptreact": "#27c6d5",
-    "property.readonly:javascript": "#27c6d5",
-    "property.readonly:typescript": "#27c6d5",
-    "property.readonly:javascriptreact": "#27c6d5",
-    "property.readonly:typescriptreact": "#27c6d5"
+    }
   },
   "colors": {
     "foreground": "#787c99",
@@ -393,7 +405,7 @@
         "punctuation.definition.string"
       ],
       "settings": {
-        "foreground": "#89ddff"
+        "foreground": "#85d0b7"
       }
     },
     {
@@ -403,11 +415,9 @@
       }
     },
     {
-      "name": "Booleans, constants, numbers",
+      "name": "Booleans, numbers",
       "scope": [
         "constant.numeric",
-        "variable.other.constant",
-        "entity.name.constant",
         "constant.language.boolean",
         "constant.language.false",
         "constant.language.true",
@@ -477,7 +487,7 @@
         "entity.name.struct"
       ],
       "settings": {
-        "foreground": "#85d0b7",
+        "foreground": "#89ddff",
         "fontStyle": "italic"
       }
     },
@@ -485,7 +495,7 @@
       "name": "Enum",
       "scope": "entity.name.enum",
       "settings": {
-        "foreground": "#85d0b7",
+        "foreground": "#89ddff",
         "fontStyle": "italic"
       }
     },
@@ -515,7 +525,7 @@
         "entity.name.type"
       ],
       "settings": {
-        "foreground": "#85d0b7",
+        "foreground": "#89ddff",
         "fontStyle": "italic"
       }
     },
@@ -565,7 +575,7 @@
         "punctuation.definition.directive"
       ],
       "settings": {
-        "foreground": "#85d0b7"
+        "foreground": "#89ddff"
       }
     },
     {
@@ -579,7 +589,7 @@
       "name": "Namespaces",
       "scope": "entity.name.namespace",
       "settings": {
-        "foreground": "#85d0b7"
+        "foreground": "#89ddff"
       }
     },
     {
@@ -643,7 +653,7 @@
         "entity.name.scope-resolution.function.definition.cpp"
       ],
       "settings": {
-        "foreground": "#85d0b7"
+        "foreground": "#89ddff"
       }
     },
     {
@@ -683,7 +693,7 @@
         "entity.other.attribute-name.parent-selector.css punctuation.definition.entity.css"
       ],
       "settings": {
-        "foreground": "#85d0b7"
+        "foreground": "#89ddff"
       }
     },
     {
@@ -709,7 +719,7 @@
     {
       "scope": "source.css variable.parameter.url",
       "settings": {
-        "foreground": "#89ddff",
+        "foreground": "#85d0b7",
         "fontStyle": ""
       }
     },
@@ -756,7 +766,7 @@
       "name": "CSS Attribute selectors, styled the same as strings",
       "scope": "source.css meta.attribute-selector",
       "settings": {
-        "foreground": "#89ddff"
+        "foreground": "#85d0b7"
       }
     },
     {
@@ -793,7 +803,7 @@
         "variable.other.alias.yaml"
       ],
       "settings": {
-        "foreground": "#85d0b7",
+        "foreground": "#89ddff",
         "fontStyle": ""
       }
     },
@@ -804,7 +814,7 @@
         "entity.name.section.group-title.ini"
       ],
       "settings": {
-        "foreground": "#85d0b7"
+        "foreground": "#89ddff"
       }
     },
     {
@@ -854,7 +864,7 @@
       "name": "Diff Inserted",
       "scope": "markup.inserted.diff",
       "settings": {
-        "foreground": "#89ddff"
+        "foreground": "#85d0b7"
       }
     },
     {
@@ -965,7 +975,7 @@
         "storage.type.haskell"
       ],
       "settings": {
-        "foreground": "#85d0b7",
+        "foreground": "#89ddff",
         "fontStyle": "italic"
       }
     },
@@ -978,7 +988,7 @@
         "support.constant.unit.unboxed.haskell keyword.operator.hash"
       ],
       "settings": {
-        "foreground": "#85d0b7",
+        "foreground": "#89ddff",
         "fontStyle": ""
       }
     },
@@ -1190,7 +1200,7 @@
         "entity.other.attribute-name"
       ],
       "settings": {
-        "foreground": "#85d0b7"
+        "foreground": "#89ddff"
       }
     },
     {
@@ -1313,7 +1323,7 @@
     {
       "scope": "variable.parameter.generic",
       "settings": {
-        "foreground": "#85d0b7"
+        "foreground": "#89ddff"
       }
     },
     {
@@ -1461,7 +1471,7 @@
         "markup.heading.heading-2.asciidoc"
       ],
       "settings": {
-        "foreground": "#85d0b7"
+        "foreground": "#89ddff"
       }
     },
     {
@@ -1475,7 +1485,7 @@
         "markup.heading.heading-3.asciidoc"
       ],
       "settings": {
-        "foreground": "#89ddff"
+        "foreground": "#85d0b7"
       }
     },
     {
@@ -1566,7 +1576,7 @@
         "markup.raw.block.quarto"
       ],
       "settings": {
-        "foreground": "#89ddff"
+        "foreground": "#85d0b7"
       }
     },
     {
@@ -1662,7 +1672,7 @@
         "meta.attribute.php"
       ],
       "settings": {
-        "foreground": "#85d0b7"
+        "foreground": "#89ddff"
       }
     },
     {
@@ -1819,7 +1829,7 @@
       "name": "Python f-strings/binary/unicode storage types",
       "scope": "storage.type.string.python",
       "settings": {
-        "foreground": "#89ddff",
+        "foreground": "#85d0b7",
         "fontStyle": "italic"
       }
     },
@@ -1875,14 +1885,14 @@
         "keyword.other.back-reference.regexp"
       ],
       "settings": {
-        "foreground": "#89ddff"
+        "foreground": "#85d0b7"
       }
     },
     {
       "name": "Regex character class []",
       "scope": "punctuation.definition.character-class.regexp",
       "settings": {
-        "foreground": "#85d0b7"
+        "foreground": "#89ddff"
       }
     },
     {
@@ -1933,7 +1943,7 @@
         "punctuation.definition.attribute.rust"
       ],
       "settings": {
-        "foreground": "#85d0b7",
+        "foreground": "#89ddff",
         "fontStyle": "italic"
       }
     },
@@ -1986,7 +1996,7 @@
       "name": "Rust impl",
       "scope": "entity.name.impl.rust",
       "settings": {
-        "foreground": "#85d0b7",
+        "foreground": "#89ddff",
         "fontStyle": "italic"
       }
     },
@@ -2001,7 +2011,7 @@
       "name": "Rust trait",
       "scope": "entity.name.trait.rust",
       "settings": {
-        "foreground": "#85d0b7",
+        "foreground": "#89ddff",
         "fontStyle": "italic"
       }
     },
@@ -2009,14 +2019,14 @@
       "name": "Rust struct",
       "scope": "storage.type.source.rust",
       "settings": {
-        "foreground": "#85d0b7"
+        "foreground": "#89ddff"
       }
     },
     {
       "name": "Rust union",
       "scope": "entity.name.union.rust",
       "settings": {
-        "foreground": "#85d0b7"
+        "foreground": "#89ddff"
       }
     },
     {
@@ -2081,7 +2091,7 @@
       "name": "Rust constants",
       "scope": "constant.other.caps.rust",
       "settings": {
-        "foreground": "#c0768e"
+        "foreground": "#e0af68"
       }
     },
     {
@@ -2191,19 +2201,34 @@
       }
     },
     {
-      "name": "Constants and ALL_CAPS variables",
+      "name": "Constants, ALL_CAPS variables, and Go/Rust constants",
       "scope": [
         "constant.other.caps",
-        "constant.other.caps.python",
         "constant.other.caps.rust",
+        "constant.other.caps.go",
+        "constant.other.caps.python",
         "variable.other.constant",
+        "variable.other.constant.go",
+        "variable.other.declaration.go",
         "entity.name.constant",
         "variable.upper-case",
         "entity.name.function.preprocessor",
         "meta.preprocessor.macro"
       ],
       "settings": {
-        "foreground": "#c0768e"
+        "foreground": "#e0af68"
+      }
+    },
+    {
+      "name": "Properties and object properties",
+      "scope": [
+        "variable.other.object.property",
+        "variable.other.object.property.java",
+        "variable.other.property",
+        "variable.other.property.java"
+      ],
+      "settings": {
+        "foreground": "#e0af68"
       }
     },
     {
