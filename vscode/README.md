@@ -1,74 +1,31 @@
-# Best Themes — VS Code Extension
+# Best Themes for VS Code
 
-This directory contains the VS Code theme extension package for **Best Themes**.
-
-All bundled themes are contributed through a single extension, allowing users to install the entire curated collection at once.
+A curated collection of visually refined themes for VS Code.
 
 ---
 
-## 📁 Directory Structure
+## 🌟 Included Themes
 
-```text
-vscode/
-├── themes/            # Individual VS Code theme JSON files
-├── package.json       # Extension manifest (contributes.themes)
-├── LICENSE            # Extension license
-└── README.md          # VS Code extension documentation
-```
+### 1. `Best Theme - Tokyo Night Enhanced`
+This theme is based on **Tokyo Night Dark Enhanced**, adapted with personal modifications to syntax highlighting, modifiers, and semantic tokens that feel the best to me.
+
+### 2. `Best Theme - Catppuccin Mocha Enhanced`
+This theme is based on **Catppuccin Mocha**, adapted with color adjustments that feel the best to me while preserving the core design. This same philosophy will be followed for all other themes added to this collection.
 
 ---
 
-## 🛠️ Local Development & Packaging
+## 🚀 Installation & Usage
 
-### Prerequisites
-- Node.js (v18+)
-- npm
-
-### 1. Install Dependencies
-From the `vscode/` directory:
-```bash
-cd vscode
-npm install
-npm install --save-dev @vscode/vsce
-```
-
-### 2. Package the Extension Locally (.vsix)
-To compile and package the extension without publishing:
-```bash
-npx vsce package --no-dependencies
-```
-This produces a file named `best-themes-<version>.vsix`.
-
-### 3. Install the VSIX in VS Code
-```bash
-code --install-extension best-themes-<version>.vsix
-```
-Or inside VS Code:
-1. Open the Extensions view (`Ctrl+Shift+X` or `Cmd+Shift+X`).
-2. Click the `...` (More Actions) menu in the top-right of the Extensions panel.
-3. Select **Install from VSIX...**.
-4. Choose the generated `.vsix` file.
+1. Install **Best Themes** from the VS Code Marketplace.
+2. Open the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`).
+3. Select `Preferences: Color Theme` (or press `Ctrl+K Ctrl+T`).
+4. Choose:
+   - **Best Theme - Tokyo Night Enhanced**
+   - **Best Theme - Catppuccin Mocha Enhanced**
 
 ---
 
-## 🎨 Adding a Theme to the Extension
+## 📄 License
 
-1. Place the theme JSON file in `vscode/themes/<theme-id>.json`.
-2. Register the theme in `vscode/package.json` under `contributes.themes`:
-   ```json
-   {
-     "label": "Best Themes — <Theme Display Name>",
-     "uiTheme": "vs-dark",
-     "path": "./themes/<theme-id>.json"
-   }
-   ```
-3. Ensure both workbench colors (`colors`) and token syntax colors (`tokenColors`) adhere to canonical semantic tokens.
-4. Repackage the extension using `npx vsce package`.
-
----
-
-## 🚀 Marketplace Publishing Considerations
-
-- Ensure `publisher`, `repository`, and `icon` fields are properly defined in `package.json`.
-- A Personal Access Token (PAT) from Azure DevOps with Marketplaces (Manage) permissions is required for `npx vsce publish`.
-- Automatic publishing is strictly disabled; manual validation precedes any release.
+Licensed under the [MIT License](file:///e:/Aditya/Projects/best-themes/vscode/LICENSE).
+Original themes retain their respective licenses and copyrights.

@@ -1,213 +1,107 @@
 # Best Themes
 
-A unified, cross-editor theme collection and semantic consistency system for **VS Code**, **Zed**, and **Neovim**.
+A curated, cross-editor theme collection and semantic consistency system for **VS Code**, **Zed**, and **Neovim**.
 
 ---
 
 ## 🌟 The Vision
 
-Developers often work across multiple editors—VS Code for full-stack web work, Zed for blazing-fast lightweight editing, and Neovim for modal terminal mastery. However, maintaining a coherent visual aesthetic across these tools is frustrating:
+Software engineers frequently move between multiple editors—VS Code for rich extension ecosystems and full-stack development, Zed for high-performance editing, and Neovim for modal terminal workflows. However, maintaining visual and cognitive consistency across these environments is challenging:
 
-1. **Fragmentation:** You have to hunt down, install, and configure disparate theme packages across three separate package ecosystems.
-2. **Visual Inconsistency:** The "same" theme (e.g., Catppuccin Mocha or Tokyo Night) often looks completely different across editors due to diverging syntax engines, token scopes, and arbitrary color decisions made by different maintainers.
-3. **Inflexibility:** It is difficult to balance keeping certain themes pristine (upstream), tweaking others to personal taste (modified), and building bespoke themes from scratch (custom).
+1. **Ecosystem Fragmentation:** Developers are forced to locate, configure, and maintain separate theme packages across different package registries.
+2. **Syntax Inconsistencies:** The "same" theme (such as Tokyo Night or Catppuccin) renders inconsistently across editors because underlying syntax engines, grammar parsers, and token scopes diverge significantly.
+3. **Arbitrary Color Assignment:** In many community themes, identical semantic concepts (such as access modifiers, type declarations, or constants) receive inconsistent colors depending on the language.
 
-**Best Themes** solves this by acting as both:
-1. **A Curated Multi-Theme Bundle:** A single installation source per editor containing an entire curated library of themes.
-2. **A Cross-Editor Visual Uniformity System:** A semantic design token architecture ensuring that equivalent code constructs look visually consistent across VS Code, Zed, and Neovim.
+**Best Themes** addresses these issues through:
+1. **A Unified Multi-Theme Collection:** A single installation per editor providing access to a curated set of enhanced themes.
+2. **A Semantic Design Token Architecture:** A disciplined syntax mapping standard that ensures programming constructs receive deliberate, coherent styling across supported languages.
+
+---
+
+## 🎨 Included Themes
+
+### 1. Best Theme - Tokyo Night Enhanced
+This theme is based on **Tokyo Night Dark Enhanced**, where I made some modifications to syntax highlighting, modifiers, and tokens that feel the best to me.
+
+### 2. Best Theme - Catppuccin Mocha Enhanced
+This theme is based on **Catppuccin Mocha**, adapted with color adjustments that feel the best to me while preserving the core design. This same philosophy will be followed for all other themes added to this collection.
 
 ---
 
 ## 🏗️ Repository Architecture
 
-The architecture separates the **conceptual source of truth** (canonical theme definitions and palettes) from the **editor-specific implementations**:
+The repository separates canonical theme definitions from editor-specific distribution packages:
 
 ```text
 best-themes/
-├── themes/                     # Canonical theme layer (Source of Truth)
-│   ├── upstream/               # Unmodified upstream themes (preserved as-is)
-│   ├── modified/               # Upstream-derived themes with deliberate tweaks
-│   └── custom/                 # Original custom themes designed from scratch
+├── themes/                     # Canonical theme source of truth
+│   ├── upstream/               # Preserved reference themes
+│   ├── modified/               # Modified & enhanced theme definitions
+│   └── custom/                 # Original bespoke theme designs
 │
 ├── vscode/                     # VS Code theme extension package
-│   ├── themes/                 # Generated/packaged VS Code theme JSON files
-│   ├── package.json            # Extension manifest exposing all themes
+│   ├── themes/                 # Packaged theme JSON files
+│   ├── package.json            # Extension manifest (contributes.themes)
 │   ├── LICENSE
 │   └── README.md
 │
 ├── zed/                        # Zed theme extension package
 │   ├── themes/
-│   │   └── best-themes.json    # Multi-theme JSON schema file
+│   │   └── best-themes.json    # Multi-theme JSON definition
 │   ├── extension.toml          # Zed extension manifest
 │   ├── LICENSE
 │   └── README.md
 │
 ├── neovim/                     # Neovim colorscheme plugin
-│   ├── colors/                 # Colorscheme entry points (e.g., best-dark.lua)
-│   ├── lua/
-│   │   └── best-themes/        # Core Lua theme modules and palettes
-│   ├── plugin/                 # Plugin runtime commands / autocommands
+│   ├── colors/                 # Colorscheme entry points
+│   ├── lua/best-themes/        # Core Lua highlight modules and palettes
 │   ├── LICENSE
 │   └── README.md
 │
 ├── tests/
-│   └── syntax-samples/         # Representative multi-language code corpus
+│   └── syntax-samples/         # Cross-language visual audit test files
 │
 ├── licenses/
-│   └── THIRD-PARTY-NOTICES.md  # Comprehensive third-party license log
+│   └── THIRD-PARTY-NOTICES.md  # Upstream license notices and attribution
 │
-├── .gitignore
 ├── LICENSE
 └── README.md
 ```
 
-### Architectural Principle
+---
 
-```text
-themes/
-  ├── upstream/   ──> (Preserved independent definitions)
-  ├── modified/   ──┐
-  └── custom/     ──┴─> Canonical Semantic Palette (Tokens)
-                             │
-            ┌────────────────┼────────────────┐
-            ▼                ▼                ▼
-         vscode/            zed/           neovim/
-     (TextMate +          (Syntax         (Tree-sitter +
-   Semantic Tokens)       Styles)           Highlight)
-```
+## 🔬 Cross-Editor Parity & Engine Reality
+
+Achieving visual parity requires understanding how each editor processes syntax:
+
+### 1. VS Code (Production Ready)
+- **Engine:** Oniguruma TextMate regex grammars combined with Language Server Protocol (LSP) Semantic Highlighting.
+- **Parity Status:** Full 1-to-1 semantic parity. TextMate rules handle instantaneous static token coloring, while granular semantic tokens (`variable.readonly`, `enumMember`, `modifier`, etc.) refine highlights dynamically when language servers index the workspace.
+
+### 2. Zed (Architectural Constraints)
+- **Engine:** Tree-sitter query captures mapped through Zed's internal `syntax` style schema.
+- **Parity Status:** Adapted for maximum harmony within Zed's constraints. Zed's theme schema maps broader syntax buckets (e.g. `keyword`, `type`, `function`, `property`) and does not currently support arbitrary TextMate regex scopes or fine-grained runtime semantic modifiers (such as differentiating `final` constants from mutable bindings without query overrides). While exact 1-to-1 parity with VS Code is prevented by these architectural differences, I have tuned the Zed themes to achieve the closest possible aesthetic and structural alignment.
+
+### 3. Neovim (In Progress)
+- **Engine:** Native Tree-sitter captures (`@keyword`, `@type`, `@function`, etc.) and LSP semantic token highlights (`@lsp.type.*`).
+- **Parity Status:** Under active development. While baseline highlights and palette structures have been defined, full cross-language visual verification is still in progress.
 
 ---
 
-## 🎨 Theme Categories
+## 🧪 Visual Audit Suite
 
-Every theme in this repository belongs to one of three clear categories:
-
-### 1. Upstream Themes (`themes/upstream/<theme-name>/`)
-* Themes imported directly from the open-source community that are preserved **exactly as-is**.
-* Visual definitions and upstream editor-specific files are kept intact.
-* Full attribution and upstream licensing notices are strictly maintained in `licenses/THIRD-PARTY-NOTICES.md`.
-
-### 2. Modified Themes (`themes/modified/<theme-name>/`)
-* Themes based on community favorites, but adapted or normalized to adhere to our cross-editor semantic standard or personal aesthetic preferences.
-* Documented with:
-  * Upstream project and repository URL
-  * Original license
-  * Detailed diff of modifications (visual vs. structural) and rationale
-* Explicitly branded (e.g., `Best Themes — Catppuccin Mocha Custom`) so upstream work is never misrepresented.
-
-### 3. Custom Themes (`themes/custom/<theme-name>/`)
-* Completely bespoke themes designed from the ground up (e.g., `Best Dark`, `Best Light`).
-* Governed directly by canonical semantic token palettes created for this project.
+The `tests/syntax-samples/` directory provides standardized multi-language test files across Rust, Java, C, C++, Go, Python, and JSON:
+- `rust.rs` — Control flow, struct definitions, impl blocks, lifetimes, macros, and traits.
+- `java.java` — Class structure, access modifiers, static final constants, enums, records, and loops.
+- `c.c` — Preprocessor macros, typedef enums, structs, pointers, and conditionals.
+- `cpp.cpp` — Namespaces, constexpr values, modern loops, references, and enum classes.
+- `python.py` — Type hints, decorators, dataclasses, control flow, and constant bindings.
+- `go.go` — Package declarations, interfaces, structs, goroutines, and error handling.
+- `json.json` — Keys, values, arrays, numbers, and boolean literals.
 
 ---
 
-## 🔮 Cross-Editor Visual Uniformity Philosophy
+## 📄 License & Attribution
 
-Different editors employ fundamentally different syntax highlighting engines:
-* **VS Code:** TextMate regex grammars + LSP Semantic Tokens (`storage.modifier`, `keyword.control`, etc.)
-* **Zed:** Tree-sitter query captures mapped through Zed's syntax style system (`keyword`, `type`, `function`, etc.)
-* **Neovim:** Native Tree-sitter highlights + Vim syntax groups (`@keyword`, `@function.method`, `Normal`, etc.)
-
-Attempting to force all editors into an identical JSON schema is impossible and counterproductive. Instead, **Best Themes targets semantic and perceptual equivalence**:
-
-> **The same semantic programming construct must receive the same intended color across all three editors.**
-
-### Canonical Semantic Design Tokens
-
-For normalized and custom themes, colors are assigned to semantic roles, not arbitrary editor scope names:
-
-```text
-[UI & Chrome]
-  background            Editor and window surface
-  foreground            Default text / unstyled identifiers
-  surface               Sidebars, panels, floating popups
-  border                Dividers and structural borders
-  selection             Selected text highlights
-  cursor                Caret indicator
-
-[Syntax Semantics]
-  comment               Documentation and inline comments
-  keyword               Control flow (if, else, for, return)
-  modifier              Access/storage modifiers (pub, private, static, final)
-  operator              Math, comparison, and assignment operators
-  string                String literals and character literals
-  number                Numeric literals (integers, floats, hex)
-  boolean               Boolean literals (true, false)
-  constant              Constants, immutable values, enum variants
-  function              Function definitions and calls
-  method                Method definitions and calls
-  type                  Type declarations, primitives, aliases
-  class                 Class names and struct identifiers
-  interface             Trait and interface definitions
-  variable              Local variables and bindings
-  parameter             Function and method parameters
-  property              Object/struct fields and attributes
-
-[Diagnostics]
-  error                 Errors and fatal diagnostics
-  warning               Warnings
-  info                  Informational messages
-  hint                  Inlay hints and suggestions
-```
-
-### Cross-Editor Mapping Example
-
-| Semantic Token | Canonical Color | VS Code Scope | Zed Style | Neovim Group |
-| :--- | :--- | :--- | :--- | :--- |
-| **keyword** | `#cba6f7` | `keyword.control` | `keyword` | `@keyword` |
-| **modifier** | `#cba6f7` | `storage.modifier` | `keyword` | `@keyword.modifier` / `@type.qualifier` |
-| **function** | `#89b4fa` | `entity.name.function` | `function` | `@function` |
-| **string** | `#a6e3a1` | `string.quoted` | `string` | `@string` |
-| **type** | `#f9e2af` | `entity.name.type` | `type` | `@type` |
-
----
-
-## 📦 Multi-Theme Distribution Summary
-
-Each editor extension distributes **all bundled themes through a single package**:
-
-| Editor | Package Type | Distribution / Local Installation | Exposed Themes |
-| :--- | :--- | :--- | :--- |
-| **VS Code** | Extension (`.vsix`) | `code --install-extension best-themes-*.vsix` | Contributed via single `package.json` |
-| **Zed** | Zed Theme Extension | Installed via local dev extension directory | Contributed via single `best-themes.json` |
-| **Neovim** | Lua Plugin | Installed via `lazy.nvim` or native packpath | Switched via `:colorscheme <name>` |
-
----
-
-## 🚀 Workflows: Adding & Maintaining Themes
-
-### Adding an Upstream Theme
-1. Place upstream reference files in `themes/upstream/<theme-name>/`.
-2. Verify that the upstream license permits bundling and redistribution.
-3. Add full attribution and license details to `licenses/THIRD-PARTY-NOTICES.md`.
-4. Add the theme definitions to `vscode/themes/`, `zed/themes/best-themes.json`, and `neovim/colors/`.
-5. Register the theme in each editor manifest.
-
-### Adding a Modified Theme
-1. Create `themes/modified/<theme-name>/README.md` noting upstream origin, diffs, and rationale.
-2. Define the canonical palette and semantic tokens.
-3. Map the palette into each editor format (`vscode/`, `zed/`, `neovim/`).
-4. Prefix theme names with `Best Themes — ` to prevent collision and preserve transparency.
-5. Update `licenses/THIRD-PARTY-NOTICES.md`.
-
-### Adding a Custom Theme
-1. Create `themes/custom/<theme-name>/` with palette definitions.
-2. Define the unified semantic color mappings.
-3. Implement the theme in `vscode/themes/`, `zed/themes/best-themes.json`, and `neovim/colors/`.
-4. Verify cross-editor consistency against `tests/syntax-samples/`.
-
----
-
-## 🧪 Testing Consistency: Syntax Samples
-
-The `tests/syntax-samples/` directory holds multi-language test files (Rust, TypeScript, Python, Go, C++, etc.) containing representative language constructs.
-
-Open these files side-by-side in VS Code, Zed, and Neovim to visually audit semantic parity across languages and editors.
-
----
-
-## 📄 Licensing & Attribution
-
-- The orchestration code, custom theme palettes, and tooling are licensed under the [MIT License](file:///e:/Aditya/Projects/best-themes/LICENSE).
-- All third-party themes, modifications, and community designs retain their respective copyrights.
-- Consult [THIRD-PARTY-NOTICES.md](file:///e:/Aditya/Projects/best-themes/licenses/THIRD-PARTY-NOTICES.md) for full attribution logs.
+- The orchestration codebase, tooling, and custom palettes are licensed under the [MIT License](file:///e:/Aditya/Projects/best-themes/LICENSE).
+- Upstream community themes and derivative adaptations retain their respective licenses and copyrights. Detailed attribution is maintained in [THIRD-PARTY-NOTICES.md](file:///e:/Aditya/Projects/best-themes/licenses/THIRD-PARTY-NOTICES.md).
