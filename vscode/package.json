@@ -29,12 +29,12 @@
   "contributes": {
     "themes": [
       {
-        "label": "Best Theme - Tokyo Night Enhanced",
+        "label": "Best Theme - Tokyo Night Tailored",
         "uiTheme": "vs-dark",
         "path": "./themes/tokyo-night-enhanced.json"
       },
       {
-        "label": "Best Theme - Catppuccin Mocha Enhanced",
+        "label": "Best Theme - Catppuccin Mocha Tailored",
         "uiTheme": "vs-dark",
         "path": "./themes/catppuccin-mocha.json"
       }

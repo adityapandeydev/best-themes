@@ -20,11 +20,13 @@ Software engineers frequently move between multiple editors—VS Code for rich e
 
 ## 🎨 Included Themes
 
-### 1. Best Theme - Tokyo Night Enhanced
-This theme is based on **Tokyo Night Dark Enhanced**, where I made some modifications to syntax highlighting, modifiers, and tokens that feel the best to me.
+### 1. Best Theme - Tokyo Night Tailored
+This theme is based on **Tokyo Night Dark Enhanced**, tailored with personal adjustments to syntax highlighting, modifiers, and tokens that feel the best to me.
+* **Credit / Upstream**: Based on [Tokyo Night](https://github.com/enkia/tokyo-night-vscode-theme) / Tokyo Night Dark Enhanced by [enkia](https://github.com/enkia).
 
-### 2. Best Theme - Catppuccin Mocha Enhanced
-This theme is based on **Catppuccin Mocha**, adapted with color adjustments that feel the best to me while preserving the core design. This same philosophy will be followed for all other themes added to this collection.
+### 2. Best Theme - Catppuccin Mocha Tailored
+This theme is based on **Catppuccin Mocha**, tailored with personal adjustments to syntax highlighting, modifiers, and tokens that feel the best to me.
+* **Credit / Upstream**: Based on the original [Catppuccin](https://github.com/catppuccin/catppuccin) and [catppuccin/vscode](https://github.com/catppuccin/vscode) by the Catppuccin team.
 
 ---
 

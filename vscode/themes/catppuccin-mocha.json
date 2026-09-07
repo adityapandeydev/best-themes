@@ -1,6 +1,88 @@
 {
-  "name": "Best Theme - Catppuccin Mocha Enhanced",
+  "name": "Best Theme - Catppuccin Mocha Tailored",
   "type": "dark",
+  "semanticHighlighting": true,
+  "semanticTokenColors": {
+    "parameter": "#eba0ac",
+    "parameter.declaration": "#eba0ac",
+    "variable": "#74c7ec",
+    "variable.declaration": "#74c7ec",
+    "variable.readonly": "#f2cdcd",
+    "variable.readonly.static": "#f2cdcd",
+    "variable.readonly:java": "#f2cdcd",
+    "variable.readonly:cpp": "#f2cdcd",
+    "variable.readonly:c": "#f2cdcd",
+    "variable.readonly:python": "#f2cdcd",
+    "variable.readonly:rust": "#f2cdcd",
+    "variable.readonly:go": "#f2cdcd",
+    "variable.readonly:zig": "#f2cdcd",
+    "variable.constant": "#f2cdcd",
+    "variable.constant:rust": "#f2cdcd",
+    "variable.constant:go": "#f2cdcd",
+    "variable.constant:c": "#f2cdcd",
+    "variable.constant:cpp": "#f2cdcd",
+    "constant": "#f2cdcd",
+    "constant:rust": "#f2cdcd",
+    "constant:go": "#f2cdcd",
+    "constant:c": "#f2cdcd",
+    "constant:cpp": "#f2cdcd",
+    "property": "#74c7ec",
+    "property.declaration": "#74c7ec",
+    "property.readonly": "#f2cdcd",
+    "property.readonly.static": "#f2cdcd",
+    "property:java": "#f2cdcd",
+    "property.readonly:java": "#f2cdcd",
+    "property.readonly.static:java": "#f2cdcd",
+    "property:go": "#74c7ec",
+    "property.declaration:go": "#74c7ec",
+    "property.readonly:go": "#74c7ec",
+    "property:c": "#74c7ec",
+    "property.declaration:c": "#74c7ec",
+    "property.readonly:c": "#74c7ec",
+    "property:cpp": "#74c7ec",
+    "property.declaration:cpp": "#74c7ec",
+    "property.readonly:cpp": "#74c7ec",
+    "property.readonly:python": "#f2cdcd",
+    "property.readonly:rust": "#f2cdcd",
+    "variable.readonly:javascript": "#74c7ec",
+    "variable.readonly:typescript": "#74c7ec",
+    "variable.readonly:javascriptreact": "#74c7ec",
+    "variable.readonly:typescriptreact": "#74c7ec",
+    "property.readonly:javascript": "#74c7ec",
+    "property.readonly:typescript": "#74c7ec",
+    "property.readonly:javascriptreact": "#74c7ec",
+    "property.readonly:typescriptreact": "#74c7ec",
+    "variable.defaultLibrary": "#f9e2af",
+    "type": "#f9e2af",
+    "type.defaultLibrary": "#cba6f7",
+    "class": "#f9e2af",
+    "struct": "#f9e2af",
+    "enum": "#f9e2af",
+    "interface": "#f9e2af",
+    "enumMember": "#94e2d5",
+    "enumMember:java": "#94e2d5",
+    "enumMember:cpp": "#94e2d5",
+    "enumMember:c": "#94e2d5",
+    "enumMember:rust": "#94e2d5",
+    "enumMember:go": "#94e2d5",
+    "function": "#89b4fa",
+    "method": "#89b4fa",
+    "keyword": "#cba6f7",
+    "keyword.control": "#cba6f7",
+    "keyword.controlFlow": "#cba6f7",
+    "keyword.repeat": "#cba6f7",
+    "keyword.conditional": "#cba6f7",
+    "keyword.return": "#cba6f7",
+    "modifier": "#cba6f7",
+    "selfKeyword": "#f38ba8",
+    "boolean": "#fab387",
+    "number": "#fab387",
+    "string": "#a6e3a1",
+    "comment": {
+      "foreground": "#6c7086",
+      "fontStyle": "italic"
+    }
+  },
   "colors": {
     "focusBorder": "#cba6f7",
     "foreground": "#cdd6f4",
@@ -567,138 +649,6 @@
     "table.headerForeground": "#cdd6f4",
     "list.focusAndSelectionBackground": "#45475a"
   },
-  "semanticHighlighting": true,
-  "semanticTokenColors": {
-    "enumMember": {
-      "foreground": "#94e2d5"
-    },
-    "selfKeyword": {
-      "foreground": "#f38ba8"
-    },
-    "boolean": {
-      "foreground": "#fab387"
-    },
-    "number": {
-      "foreground": "#fab387"
-    },
-    "variable.defaultLibrary": {
-      "foreground": "#eba0ac"
-    },
-    "class:python": {
-      "foreground": "#f9e2af"
-    },
-    "class.builtin:python": {
-      "foreground": "#cba6f7"
-    },
-    "variable.typeHint:python": {
-      "foreground": "#f9e2af"
-    },
-    "function.decorator:python": {
-      "foreground": "#fab387"
-    },
-    "variable.readonly:javascript": {
-      "foreground": "#cdd6f4"
-    },
-    "variable.readonly:typescript": {
-      "foreground": "#cdd6f4"
-    },
-    "property.readonly:javascript": {
-      "foreground": "#cdd6f4"
-    },
-    "property.readonly:typescript": {
-      "foreground": "#cdd6f4"
-    },
-    "variable.readonly:javascriptreact": {
-      "foreground": "#cdd6f4"
-    },
-    "variable.readonly:typescriptreact": {
-      "foreground": "#cdd6f4"
-    },
-    "property.readonly:javascriptreact": {
-      "foreground": "#cdd6f4"
-    },
-    "property.readonly:typescriptreact": {
-      "foreground": "#cdd6f4"
-    },
-    "variable.readonly:scala": {
-      "foreground": "#cdd6f4"
-    },
-    "type.defaultLibrary:go": {
-      "foreground": "#cba6f7"
-    },
-    "variable.readonly.defaultLibrary:go": {
-      "foreground": "#cba6f7"
-    },
-    "enumMember:haskell": {
-      "foreground": "#89b4fa",
-      "fontStyle": ""
-    },
-    "enum:haskell": {
-      "foreground": "#f9e2af",
-      "fontStyle": "italic"
-    },
-    "type:haskell": {
-      "foreground": "#f9e2af",
-      "fontStyle": "italic"
-    },
-    "class:haskell": {
-      "foreground": "#f9e2af",
-      "fontStyle": ""
-    },
-    "interface:haskell": {
-      "foreground": "#f5c2e7",
-      "fontStyle": ""
-    },
-    "property:haskell": {
-      "foreground": "#b4befe",
-      "fontStyle": "italic"
-    },
-    "macro:haskell": {
-      "foreground": "#89b4fa",
-      "fontStyle": ""
-    },
-    "typeParameter:haskell": {
-      "foreground": "#eba0ac",
-      "fontStyle": ""
-    },
-    "variable:haskell": {
-      "fontStyle": ""
-    },
-    "tomlArrayKey": {
-      "foreground": "#89b4fa",
-      "fontStyle": ""
-    },
-    "tomlTableKey": {
-      "foreground": "#89b4fa",
-      "fontStyle": ""
-    },
-    "builtinAttribute.attribute.library:rust": {
-      "foreground": "#89b4fa"
-    },
-    "generic.attribute:rust": {
-      "foreground": "#cdd6f4"
-    },
-    "constant.builtin.readonly:nix": {
-      "foreground": "#cba6f7"
-    },
-    "heading": {
-      "foreground": "#f38ba8"
-    },
-    "text.emph": {
-      "foreground": "#f38ba8",
-      "fontStyle": "italic"
-    },
-    "text.strong": {
-      "foreground": "#f38ba8",
-      "fontStyle": "bold"
-    },
-    "text.math": {
-      "foreground": "#f2cdcd"
-    },
-    "pol": {
-      "foreground": "#f2cdcd"
-    }
-  },
   "tokenColors": [
     {
       "name": "Basic text & variable names (incl. leading punctuation)",
@@ -709,7 +659,7 @@
         "punctuation.definition.variable"
       ],
       "settings": {
-        "foreground": "#cdd6f4"
+        "foreground": "#74c7ec"
       }
     },
     {
@@ -747,11 +697,9 @@
       }
     },
     {
-      "name": "Booleans, constants, numbers",
+      "name": "Booleans, numbers",
       "scope": [
         "constant.numeric",
-        "variable.other.constant",
-        "entity.name.constant",
         "constant.language.boolean",
         "constant.language.false",
         "constant.language.true",
@@ -2425,7 +2373,7 @@
       "name": "Rust constants",
       "scope": "constant.other.caps.rust",
       "settings": {
-        "foreground": "#fab387"
+        "foreground": "#f2cdcd"
       }
     },
     {
@@ -2532,6 +2480,70 @@
       ],
       "settings": {
         "foreground": "#f38ba8"
+      }
+    },
+    {
+      "name": "Constants and ALL_CAPS variables across all languages",
+      "scope": [
+        "constant.other.caps",
+        "constant.other.caps.rust",
+        "constant.other.caps.go",
+        "constant.other.caps.c",
+        "constant.other.caps.cpp",
+        "constant.other.caps.python",
+        "variable.other.constant",
+        "variable.other.constant.go",
+        "variable.other.constant.c",
+        "variable.other.constant.cpp",
+        "entity.name.constant",
+        "variable.upper-case",
+        "entity.name.function.preprocessor",
+        "meta.preprocessor.macro"
+      ],
+      "settings": {
+        "foreground": "#f2cdcd"
+      }
+    },
+    {
+      "name": "Java properties and object properties",
+      "scope": [
+        "variable.other.object.property.java",
+        "variable.other.property.java"
+      ],
+      "settings": {
+        "foreground": "#f2cdcd"
+      }
+    },
+    {
+      "name": "C, CPP, and Go struct fields and properties",
+      "scope": [
+        "variable.other.property.c",
+        "variable.other.member.c",
+        "variable.other.property.cpp",
+        "variable.other.member.cpp",
+        "variable.other.property.go",
+        "variable.other.member.go",
+        "variable.other.declaration.go",
+        "variable.other.readwrite"
+      ],
+      "settings": {
+        "foreground": "#74c7ec"
+      }
+    },
+    {
+      "name": "JS/TS constants as regular variables",
+      "scope": [
+        "variable.other.constant.js",
+        "variable.other.constant.ts",
+        "variable.other.constant.jsx",
+        "variable.other.constant.tsx",
+        "variable.other.property.js",
+        "variable.other.property.ts",
+        "variable.other.property.jsx",
+        "variable.other.property.tsx"
+      ],
+      "settings": {
+        "foreground": "#74c7ec"
       }
     }
   ]
