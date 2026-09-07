@@ -33,7 +33,9 @@
     "property.readonly:c": "#e0af68",
     "property.readonly:python": "#e0af68",
     "property.readonly:rust": "#e0af68",
-    "property.readonly:go": "#e0af68",
+    "property:go": "#27c6d5",
+    "property.declaration:go": "#27c6d5",
+    "property.readonly:go": "#27c6d5",
     "variable.readonly:javascript": "#27c6d5",
     "variable.readonly:typescript": "#27c6d5",
     "variable.readonly:javascriptreact": "#27c6d5",
@@ -2209,7 +2211,6 @@
         "constant.other.caps.python",
         "variable.other.constant",
         "variable.other.constant.go",
-        "variable.other.declaration.go",
         "entity.name.constant",
         "variable.upper-case",
         "entity.name.function.preprocessor",
@@ -2220,15 +2221,24 @@
       }
     },
     {
-      "name": "Properties and object properties",
+      "name": "Java properties and object properties",
       "scope": [
-        "variable.other.object.property",
         "variable.other.object.property.java",
-        "variable.other.property",
         "variable.other.property.java"
       ],
       "settings": {
         "foreground": "#e0af68"
+      }
+    },
+    {
+      "name": "Go struct fields and properties",
+      "scope": [
+        "variable.other.property.go",
+        "variable.other.member.go",
+        "variable.other.declaration.go"
+      ],
+      "settings": {
+        "foreground": "#27c6d5"
       }
     },
     {
