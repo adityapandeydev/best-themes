@@ -51,7 +51,15 @@
     "comment": {
       "foreground": "#565f89",
       "fontStyle": "italic"
-    }
+    },
+    "variable.readonly:javascript": "#27c6d5",
+    "variable.readonly:typescript": "#27c6d5",
+    "variable.readonly:javascriptreact": "#27c6d5",
+    "variable.readonly:typescriptreact": "#27c6d5",
+    "property.readonly:javascript": "#27c6d5",
+    "property.readonly:typescript": "#27c6d5",
+    "property.readonly:javascriptreact": "#27c6d5",
+    "property.readonly:typescriptreact": "#27c6d5"
   },
   "colors": {
     "foreground": "#787c99",
@@ -2209,6 +2217,22 @@
       ],
       "settings": {
         "foreground": "#ff9e64"
+      }
+    },
+    {
+      "name": "JS/TS constants as regular variables",
+      "scope": [
+        "variable.other.constant.js",
+        "variable.other.constant.ts",
+        "variable.other.constant.jsx",
+        "variable.other.constant.tsx",
+        "variable.other.property.js",
+        "variable.other.property.ts",
+        "variable.other.property.jsx",
+        "variable.other.property.tsx"
+      ],
+      "settings": {
+        "foreground": "#27c6d5"
       }
     }
   ]
