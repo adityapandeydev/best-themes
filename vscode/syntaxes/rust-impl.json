@@ -1,0 +1,10 @@
+{
+  "scopeName": "rust.injection",
+  "injectionSelector": "L:source.rust",
+  "patterns": [
+    {
+      "match": "\\b(impl)\\b",
+      "name": "keyword.declaration.impl.rust"
+    }
+  ]
+}

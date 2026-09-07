@@ -26,3 +26,5 @@ out/
 tmp/
 .cache/
 /themes/
+scratch/
+*.backup.json

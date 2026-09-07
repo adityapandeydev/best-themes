@@ -33,6 +33,7 @@ pub fn get_version() -> Result<(i32, i32, i32), String> {
     let handle = open_driver()?;
     let mut version = (0i32, 0i32, 0i32);
     let mut bytes_returned = 0u32;
+    let f: bool = false; 
 
     println!("Current version: {:?}", version);
     Ok(version)

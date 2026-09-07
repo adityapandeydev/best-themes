@@ -33,6 +33,15 @@
         "uiTheme": "vs-dark",
         "path": "./themes/tokyo-night-enhanced.json"
       }
+    ],
+    "grammars": [
+      {
+        "scopeName": "rust.injection",
+        "path": "./syntaxes/rust-impl.json",
+        "injectTo": [
+          "source.rust"
+        ]
+      }
     ]
   }
 }

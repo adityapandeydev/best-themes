@@ -600,6 +600,15 @@
       }
     },
     {
+      "name": "Rust Impl Keyword",
+      "scope": [
+        "keyword.declaration.impl.rust"
+      ],
+      "settings": {
+        "foreground": "#bb9af7"
+      }
+    },
+    {
       "name": "Keyword SQL",
       "scope": "keyword.other.DML",
       "settings": {
