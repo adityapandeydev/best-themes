@@ -1,0 +1,8 @@
+[package]
+name = "syntax_samples"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "sample"
+path = "rust.rs"

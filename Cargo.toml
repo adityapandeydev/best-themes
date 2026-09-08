@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "tests/syntax-samples"
+]
+resolver = "2"

@@ -1,15 +1,31 @@
 // Best Themes — React / JSX Syntax Sample for Cross-Editor Visual Audit
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 
-export const TelemetryCard = ({
-  title,
+// --- Higher-Order Component (Decorator Pattern in React JSX) ---
+export const withTelemetryLogger = (WrappedComponent, componentTag = "RAWACCEL_JSX") => {
+  return function EnhancedComponent(props) {
+    useEffect(() => {
+      console.log(`[DECORATOR-HOC] Mounted JSX component: ${componentTag}`);
+    }, []);
+
+    return <WrappedComponent {...props} trackingTag={componentTag} />;
+  };
+};
+
+const BaseTelemetryCard = ({
+  title = "Telemetry Dashboard",
   initialCount = 0,
-  isActive,
-  onStatusChange,
+  isActive = true,
+  trackingTag = "DEFAULT_TAG",
+  onStatusChange = () => {},
 }) => {
   const [counter, setCounter] = useState(initialCount);
   const [status, setStatus] = useState("idle");
+
+  const badgeColor = useMemo(() => {
+    return status === "running" ? "#94e2d5" : "#89ddff";
+  }, [status]);
 
   const handleIncrement = useCallback(() => {
     setCounter((prev) => prev + 1);
@@ -23,11 +39,11 @@ export const TelemetryCard = ({
   }, [counter, onStatusChange]);
 
   return (
-    <section className="telemetry-card" data-active={isActive}>
-      <header className="card-header">
+    <section className="telemetry-card" data-active={isActive} data-tag={trackingTag}>
+      <header className="card-header" style={{ borderColor: badgeColor }}>
         <h2 className="title">{title}</h2>
         <span className={`status-badge status-${status}`}>
-          Status: {status.toUpperCase()}
+          Status: {status.toUpperCase()} [{trackingTag}]
         </span>
       </header>
 
@@ -57,3 +73,5 @@ export const TelemetryCard = ({
     </section>
   );
 };
+
+export const TelemetryCard = withTelemetryLogger(BaseTelemetryCard, "RAWACCEL_METRICS");

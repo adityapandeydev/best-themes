@@ -28,3 +28,8 @@ tmp/
 /themes/
 scratch/
 *.backup.json
+target/
+Cargo.lock
+__pycache__/
+*.pyc
+

@@ -3,18 +3,34 @@ import gleam/io
 import gleam/int
 import gleam/list
 import gleam/float
+import gleam/result
+
+// --- Gleam Attributes / Annotations (Decorators) ---
+@target(erlang)
+pub const target_platform: String = "BEAM_OTP"
 
 pub const max_capacity: Int = 512
 pub const default_scale: Float = 16.0
 
+// --- Custom Types (Enums & Tagged Unions) ---
 pub type DeviceStatus {
-  Active
+  Active(channel: Int)
   Standby
   Disconnected
 }
 
 pub type MetricPacket {
   MetricPacket(id: Int, value: Int, is_valid: Bool)
+}
+
+// External Erlang function binding with attribute
+@external(erlang, "erlang", "display")
+pub fn debug_inspect(term: a) -> a
+
+// Deprecated function attribute demonstration
+@deprecated("Use process_batch_pipeline instead for performance")
+pub fn legacy_accumulate(items: List(Int)) -> Float {
+  process_batch_recursive(items, 0, 100, 0.0)
 }
 
 // In Gleam (purely functional), iteration loops are implemented 
@@ -57,12 +73,19 @@ pub fn process_batch_recursive(
   }
 }
 
-// Demonstration via List pipeline iteration
-pub fn process_batch_pipeline(samples: List(Int), limit: Int) -> Float {
-  samples
-  |> list.take(limit)
-  |> list.filter(fn(x) { x >= 0 })
-  |> list.fold(0.0, fn(acc, item) {
-    acc +. int.to_float(item) *. 1.5
-  })
+// Demonstration via List pipeline iteration with Result handling
+pub fn process_batch_pipeline(samples: List(Int), limit: Int) -> Result(Float, String) {
+  case samples {
+    [] -> Error("Sample batch cannot be empty")
+    _ -> {
+      let total = 
+        samples
+        |> list.take(limit)
+        |> list.filter(fn(x) { x >= 0 })
+        |> list.fold(0.0, fn(acc, item) {
+          acc +. int.to_float(item) *. 1.5
+        })
+      Ok(total)
+    }
+  }
 }

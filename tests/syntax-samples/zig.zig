@@ -1,27 +1,70 @@
 // Best Themes — Zig Syntax Sample for Cross-Editor Visual Audit
 const std = @import("std");
 
+// --- Global Compile-Time Constants ---
 pub const MAX_CAPACITY: usize = 512;
 pub const DEFAULT_SCALE: f64 = 16.0;
+pub const DRIVER_ENDPOINT: []const u8 = "/dev/rawaccel";
 
-pub const DeviceState = enum {
-    idle,
-    streaming,
-    disconnected,
+// --- Error Sets ---
+pub const TelemetryError = error{
+    BufferExhausted,
+    DeviceOffline,
+    InvalidChecksum,
+    TimeoutOccurred,
 };
 
+// --- Enums & Tagged Unions ---
+pub const DeviceState = enum(u8) {
+    idle = 0,
+    streaming = 1,
+    calibrating = 2,
+    disconnected = 3,
+
+    pub fn isOnline(self: DeviceState) bool {
+        return self != .disconnected;
+    }
+};
+
+pub const SensorPayload = union(enum) {
+    raw_integer: i32,
+    calibrated_float: f64,
+    status_message: []const u8,
+};
+
+// --- Structs with Methods & Comptime ---
 pub const SensorPacket = struct {
     id: u32,
     raw_reading: i32,
     is_valid: bool,
+    state: DeviceState,
+
+    const Self = @This();
+
+    pub fn init(id: u32, reading: i32) Self {
+        return Self{
+            .id = id,
+            .raw_reading = reading,
+            .is_valid = true,
+            .state = .idle,
+        };
+    }
+
+    pub fn formatTelemetry(self: *const Self) !f64 {
+        if (!self.state.isOnline()) {
+            @setCold(true);
+            return TelemetryError.DeviceOffline;
+        }
+        return @floatFromInt(self.raw_reading);
+    }
 };
 
-// --- Comprehensive For Loop Demonstration ---
-pub fn processSensorData(samples: []const i32, max_limit: usize, verbose: bool) f64 {
+// --- Comprehensive For Loop Demonstration with Zig Built-ins ---
+pub fn processSensorData(samples: []const i32, max_limit: usize, verbose: bool) TelemetryError!f64 {
     var accumulated_score: f64 = 0.0;
 
     // Multi-line comment:
-    // Demonstrates Zig for loops with multiple captures, guard clauses, and printing.
+    // Demonstrates Zig for loops with multiple captures, guard clauses, builtins, and error handling.
     for (samples, 0..) |sample, idx| {
         // 1. Guard conditions with break
         if (idx >= max_limit) {
