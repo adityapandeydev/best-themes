@@ -83,6 +83,7 @@
     "modifier": "#bb9af7",
     "selfKeyword": "#f7768e",
     "boolean": "#c0768e",
+    "number": "#c0768e",
     "string": "#85d0b7",
     "comment": {
       "foreground": "#565f89",
@@ -116,7 +117,7 @@
     "struct.defaultLibrary:rust": "#89ddff",
     "enum.defaultLibrary:rust": "#89ddff",
     "interface.defaultLibrary:rust": "#89ddff",
-    "decorator:rust": "#27c6d5",
+    "decorator:rust": "#b4befe",
     "selfTypeKeyword:rust": "#89ddff",
     "type.primitive:rust": "#bb9af7",
     "type.builtin:rust": "#bb9af7",
@@ -126,20 +127,19 @@
     "const.declaration:rust": "#e0af68",
     "builtinType": "#bb9af7",
     "builtinType:rust": "#bb9af7",
-    "derive": "#27c6d5",
-    "derive:rust": "#27c6d5",
-    "deriveHelper": "#ff9e64",
-    "deriveHelper:rust": "#ff9e64",
-    "generic.attribute": "#ff9e64",
-    "generic.attribute:rust": "#ff9e64",
-    "attribute:rust": "#27c6d5",
-    "builtinAttribute:rust": "#27c6d5",
-    "toolAttribute:rust": "#27c6d5",
+    "derive": "#b4befe",
+    "derive:rust": "#b4befe",
+    "deriveHelper": "#b4befe",
+    "deriveHelper:rust": "#b4befe",
+    "generic.attribute": "#b4befe",
+    "generic.attribute:rust": "#b4befe",
+    "attribute:rust": "#b4befe",
+    "builtinAttribute:rust": "#b4befe",
+    "toolAttribute:rust": "#b4befe",
     "namespace:rust": "#89ddff",
-    "namespace.attribute:rust": "#27c6d5",
-    "generic:rust": "#ff9e64",
-    "generic": "#ff9e64",
-    "number": "#ff9e64"
+    "namespace.attribute:rust": "#b4befe",
+    "generic:rust": "#b4befe",
+    "generic": "#b4befe"
   },
   "colors": {
     "foreground": "#787c99",
@@ -493,7 +493,7 @@
         "keyword.other.unit.suffix.floating-point"
       ],
       "settings": {
-        "foreground": "#ff9e64"
+        "foreground": "#c0768e"
       }
     },
     {
@@ -2018,7 +2018,7 @@
         "punctuation.definition.attribute.rust"
       ],
       "settings": {
-        "foreground": "#27c6d5",
+        "foreground": "#b4befe",
         "fontStyle": "italic"
       }
     },
@@ -2339,17 +2339,6 @@
       ],
       "settings": {
         "foreground": "#27c6d5"
-      }
-    },
-    {
-      "name": "Rust attribute internals",
-      "scope": [
-        "meta.attribute.rust entity.name.type.rust",
-        "meta.attribute.rust entity.name.type",
-        "meta.attribute.rust variable"
-      ],
-      "settings": {
-        "foreground": "#ff9e64"
       }
     }
   ]
