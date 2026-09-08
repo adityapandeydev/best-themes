@@ -10,6 +10,12 @@ local themes = {
   ["best-tokyo-night-enhanced"] = function()
     return require("best-themes.palettes.tokyo-night-enhanced")
   end,
+  ["catppuccin-mocha"] = function()
+    return require("best-themes.palettes.catppuccin-mocha")
+  end,
+  ["best-catppuccin-mocha"] = function()
+    return require("best-themes.palettes.catppuccin-mocha")
+  end,
 }
 
 local function ensure_after_in_rtp()

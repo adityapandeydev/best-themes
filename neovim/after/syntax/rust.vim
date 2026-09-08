@@ -8,14 +8,14 @@ syn match rustEnumVariantIdent display "\<[A-Z][a-zA-Z0-9_]*\ze\s*\(=\|,\|\n\)"
 syn match rustFuncCall display "\<\h\w*\ze\s*("
 syn match rustMethodCall display "\.\zs\h\w*\ze\s*("
 
-hi def link rustPubModifier rustPubModifierHL
-hi def link rustMutModifier rustMutModifierHL
-hi def link rustLetModifier rustLetModifierHL
+hi def link rustPubModifier @keyword.modifier
+hi def link rustMutModifier @keyword.modifier
+hi def link rustLetModifier @keyword.modifier
 hi def link rustCapsIdent Constant
 hi def link rustSkyKeywords Statement
-hi def link rustEnumVariantIdent rustEnumVariant
+hi def link rustEnumVariantIdent @type.enum.variant
 hi def link rustFuncCall Function
 hi def link rustMethodCall Function
-hi! rustStorage guifg=#bb9af7 gui=NONE
-hi! rustStructure guifg=#bb9af7 gui=NONE
-hi! rustAttribute guifg=#a9b1d6
+hi def link rustStorage StorageClass
+hi def link rustStructure Structure
+hi def link rustAttribute @attribute

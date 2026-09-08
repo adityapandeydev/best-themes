@@ -7,8 +7,8 @@ syn match zigBuiltin display "@\h\w*"
 syn match zigFuncCall display "\<\h\w*\ze\s*("
 syn match zigMethodCall display "\.\zs\h\w*\ze\s*("
 
-hi def link zigPubModifier rustPubModifierHL
-hi def link zigStorage zigStorage
+hi def link zigPubModifier @keyword.modifier
+hi def link zigStorage StorageClass
 hi def link zigCapsIdent Constant
 hi def link zigSkyKeywords Statement
 hi def link zigBuiltin PreProc

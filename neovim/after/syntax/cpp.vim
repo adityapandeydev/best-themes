@@ -7,11 +7,11 @@ syn match cFuncCall display "\<\h\w*\ze\s*("
 syn match cMethodCall display "\(\.\|->\)\zs\h\w*\ze\s*("
 
 hi def link cppCapsIdent Constant
-hi def link cppStorage cppStorage
-hi def link cppModifier cppModifier
+hi def link cppStorage StorageClass
+hi def link cppModifier StorageClass
 hi def link cppSkyKeywords Statement
 hi def link cFuncCall Function
 hi def link cMethodCall Function
-hi! cInclude guifg=#89ddff
-hi! cDefine guifg=#bb9af7
-hi! cPreProc guifg=#89ddff
+hi def link cInclude Include
+hi def link cDefine Define
+hi def link cPreProc PreProc

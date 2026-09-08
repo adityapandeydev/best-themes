@@ -4,7 +4,7 @@ syn keyword javaSkyKeywords for while if else do switch case break continue retu
 syn match javaCapsIdent display "\<[A-Z][A-Z0-9_]\+\>"
 syn match javaMethodCall display "\.\zs\h\w*\ze\s*("
 
-hi def link javaModifier javaModifier
+hi def link javaModifier StorageClass
 hi def link javaSkyKeywords Statement
 hi def link javaConditional Statement
 hi def link javaRepeat Statement

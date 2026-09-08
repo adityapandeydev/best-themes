@@ -1,270 +1,191 @@
 local M = {}
 
-local syntax_definitions = {
-  rust = [[
-    " Attributes: white / text foreground (never green)
-    hi! rustAttribute guifg=#a9b1d6
+local function get_syntax_cmds(p)
+  return {
+    rust = [[
+      syn keyword rustPubModifier pub
+      syn keyword rustMutModifier mut
+      syn keyword rustLetModifier let
+      syn match rustCapsIdent display "\<[A-Z][A-Z0-9_]\+\>"
+      syn keyword rustSkyKeywords fn impl for in if else while loop break continue return
+      syn match rustEnumVariantIdent display "\<[A-Z][a-zA-Z0-9_]*\ze\s*\(=\|,\|\n\)"
+      syn match rustFuncCall display "\<\h\w*\ze\s*("
+      syn match rustMethodCall display "\.\zs\h\w*\ze\s*("
 
-    " Modifiers: pub, mut, let in lavender purple italic
-    syn keyword rustPubModifier pub
-    syn keyword rustMutModifier mut
-    syn keyword rustLetModifier let
-    hi! rustPubModifier guifg=#bb9af7 gui=italic cterm=italic
-    hi! rustMutModifier guifg=#bb9af7 gui=italic cterm=italic
-    hi! rustLetModifier guifg=#bb9af7 gui=italic cterm=italic
+      hi def link rustPubModifier @keyword.modifier
+      hi def link rustMutModifier @keyword.modifier
+      hi def link rustLetModifier @keyword.modifier
+      hi def link rustCapsIdent Constant
+      hi def link rustSkyKeywords Statement
+      hi def link rustEnumVariantIdent @type.enum.variant
+      hi def link rustFuncCall Function
+      hi def link rustMethodCall Function
+      hi def link rustType Type
+      hi def link rustDeriveTrait Type
+      hi def link rustTrait Type
+      hi def link rustEnum Type
+      hi def link rustStorage StorageClass
+      hi def link rustStructure Structure
+      hi def link rustAttribute @attribute
+    ]],
 
-    " const & static: purple, NOT italic
-    hi! rustStorage guifg=#bb9af7 gui=NONE
+    zig = [[
+      syn keyword zigPubModifier pub
+      syn keyword zigStorage const var
+      syn match zigCapsIdent display "\<[A-Z][A-Z0-9_]\+\>"
+      syn keyword zigSkyKeywords fn for while if else break continue return
+      syn match zigBuiltin display "@\h\w*"
+      syn match zigFuncCall display "\<\h\w*\ze\s*("
+      syn match zigMethodCall display "\.\zs\h\w*\ze\s*("
 
-    " Structure: enum & struct in purple
-    hi! rustStructure guifg=#bb9af7 gui=NONE
+      hi def link zigPubModifier @keyword.modifier
+      hi def link zigStorage StorageClass
+      hi def link zigCapsIdent Constant
+      hi def link zigSkyKeywords Statement
+      hi def link zigBuiltin PreProc
+      hi def link zigFuncCall Function
+      hi def link zigMethodCall Function
+    ]],
 
-    " Constant variables: ALL_CAPS in Tokyo Night Red (#f7768e)
-    syn match rustCapsIdent display "\<[A-Z][A-Z0-9_]\+\>"
-    hi! rustCapsIdent guifg=#f7768e
+    c = [[
+      syn match cppCapsIdent display "\<[A-Z][A-Z0-9_]\+\>"
+      syn keyword cppStorage const static constexpr
+      syn keyword cppModifier inline volatile
+      syn keyword cppSkyKeywords for while if else do switch case break continue return
+      syn match cFuncCall display "\<\h\w*\ze\s*("
+      syn match cMethodCall display "\(\.\|->\)\zs\h\w*\ze\s*("
 
-    " Declaration & control keywords: fn, impl, for, if in sky blue
-    syn keyword rustSkyKeywords fn impl for in if else while loop break continue return
-    hi! rustSkyKeywords guifg=#89ddff
+      hi def link cppCapsIdent Constant
+      hi def link cppStorage StorageClass
+      hi def link cppModifier StorageClass
+      hi def link cppSkyKeywords Statement
+      hi def link cFuncCall Function
+      hi def link cMethodCall Function
+      hi def link cInclude Include
+      hi def link cDefine Define
+      hi def link cPreProc PreProc
+    ]],
 
-    " Enum variants in declarations (Tokyo Night Red)
-    syn match rustEnumVariantIdent display "\<[A-Z][a-zA-Z0-9_]*\ze\s*\(=\|,\|\n\)"
-    hi! rustEnumVariantIdent guifg=#f7768e
+    cpp = [[
+      syn match cppCapsIdent display "\<[A-Z][A-Z0-9_]\+\>"
+      syn keyword cppStorage const static constexpr
+      syn keyword cppModifier public private protected virtual explicit inline volatile
+      syn keyword cppSkyKeywords for while if else do switch case break continue return
+      syn match cFuncCall display "\<\h\w*\ze\s*("
+      syn match cMethodCall display "\(\.\|->\)\zs\h\w*\ze\s*("
 
-    " Function and method calls in soft blue
-    syn match rustFuncCall display "\<\h\w*\ze\s*("
-    syn match rustMethodCall display "\.\zs\h\w*\ze\s*("
-    hi! rustFuncCall guifg=#7aa2f7
-    hi! rustMethodCall guifg=#7aa2f7
+      hi def link cppCapsIdent Constant
+      hi def link cppStorage StorageClass
+      hi def link cppModifier StorageClass
+      hi def link cppSkyKeywords Statement
+      hi def link cFuncCall Function
+      hi def link cMethodCall Function
+      hi def link cInclude Include
+      hi def link cDefine Define
+      hi def link cPreProc PreProc
+    ]],
 
-    " Types and Traits
-    hi! rustType guifg=#0db9d7
-    hi! rustDeriveTrait guifg=#0db9d7
-    hi! rustTrait guifg=#0db9d7
-    hi! rustEnum guifg=#0db9d7
-  ]],
+    java = [[
+      syn match javaCapsIdent display "\<[A-Z][A-Z0-9_]\+\>"
+      syn match javaVarIdent display "\<[a-z][a-zA-Z0-9_]*\>"
+      syn keyword javaModifier public private protected static final synchronized volatile abstract
+      syn keyword javaSkyKeywords for while if else do switch case break continue return
+      syn match javaMethodCall display "\.\zs\h\w*\ze\s*("
 
-  zig = [[
-    " Modifiers: pub in purple italic
-    syn keyword zigPubModifier pub
-    hi! zigPubModifier guifg=#bb9af7 gui=italic cterm=italic
+      hi def link javaModifier StorageClass
+      hi def link javaScopeDecl StorageClass
+      hi def link javaStorageClass StorageClass
+      hi def link javaSkyKeywords Statement
+      hi def link javaConditional Statement
+      hi def link javaRepeat Statement
+      hi def link javaBranch Statement
+      hi def link javaStatement Statement
+      hi def link javaCapsIdent Constant
+      hi def link javaMethodCall Function
+    ]],
 
-    " const & var: purple, NOT italic
-    syn keyword zigStorage const var
-    hi! zigStorage guifg=#bb9af7 gui=NONE
+    go = [[
+      syn keyword goStorage const var
+      syn match goCapsIdent display "\<[A-Z][A-Z0-9_]\+\>"
+      syn keyword goSkyKeywords func for range if else switch case select return break continue
+      syn match goFuncCall display "\<\h\w*\ze\s*("
+      syn match goMethodCall display "\.\zs\h\w*\ze\s*("
 
-    " Constant variables in Tokyo Night Red (#f7768e)
-    syn match zigCapsIdent display "\<[A-Z][A-Z0-9_]\+\>"
-    hi! zigCapsIdent guifg=#f7768e
+      hi def link goStorage StorageClass
+      hi def link goCapsIdent Constant
+      hi def link goSkyKeywords Statement
+      hi def link goFuncCall Function
+      hi def link goMethodCall Function
+    ]],
 
-    " Control flow keywords in sky blue
-    syn keyword zigSkyKeywords fn for while if else break continue return
-    hi! zigSkyKeywords guifg=#89ddff
+    typescript = [[
+      syn keyword tsStorage const
+      syn keyword tsModifier let export import async static public private protected readonly
+      syn match tsCapsIdent display "\<[A-Z][A-Z0-9_]\+\>"
+      syn keyword tsSkyKeywords function return if else for while switch case break continue
+      syn match tsFuncCall display "\<\h\w*\ze\s*("
+      syn match tsMethodCall display "\.\zs\h\w*\ze\s*("
 
-    " Built-ins in teal
-    syn match zigBuiltin display "@\h\w*"
-    hi! zigBuiltin guifg=#73daca
+      hi def link tsStorage StorageClass
+      hi def link tsModifier @keyword.modifier
+      hi def link tsCapsIdent Constant
+      hi def link tsSkyKeywords Statement
+      hi def link tsFuncCall Function
+      hi def link tsMethodCall Function
+    ]],
 
-    " Function and method calls
-    syn match zigFuncCall display "\<\h\w*\ze\s*("
-    syn match zigMethodCall display "\.\zs\h\w*\ze\s*("
-    hi! zigFuncCall guifg=#7aa2f7
-    hi! zigMethodCall guifg=#7aa2f7
-  ]],
+    javascript = [[
+      syn keyword jsStorage const
+      syn keyword jsModifier let export import async static readonly
+      syn match jsCapsIdent display "\<[A-Z][A-Z0-9_]\+\>"
+      syn keyword jsSkyKeywords function return if else for while switch case break continue
+      syn match jsFuncCall display "\<\h\w*\ze\s*("
+      syn match jsMethodCall display "\.\zs\h\w*\ze\s*("
 
-  c = [[
-    " Constants in Tokyo Night Red (#f7768e)
-    syn match cppCapsIdent display "\<[A-Z][A-Z0-9_]\+\>"
-    hi! cppCapsIdent guifg=#f7768e
+      hi def link jsStorage StorageClass
+      hi def link jsModifier @keyword.modifier
+      hi def link jsCapsIdent Constant
+      hi def link jsSkyKeywords Statement
+      hi def link jsFuncCall Function
+      hi def link jsMethodCall Function
+    ]],
 
-    " Storage: const, static, constexpr in purple, NOT italic
-    syn keyword cppStorage const static constexpr
-    hi! cppStorage guifg=#bb9af7 gui=NONE
+    python = [[
+      syn match pythonCapsIdent display "\<[A-Z][A-Z0-9_]\+\>"
+      syn keyword pythonSkyKeywords def class return if elif else for while break continue try except
+      syn match pythonFuncCall display "\<\h\w*\ze\s*("
+      syn match pythonMethodCall display "\.\zs\h\w*\ze\s*("
 
-    " Modifiers in purple italic
-    syn keyword cppModifier inline volatile
-    hi! cppModifier guifg=#bb9af7 gui=italic cterm=italic
+      hi def link pythonCapsIdent Constant
+      hi def link pythonSkyKeywords Statement
+      hi def link pythonFuncCall Function
+      hi def link pythonMethodCall Function
+    ]],
 
-    " Control flow keywords in sky blue
-    syn keyword cppSkyKeywords for while if else do switch case break continue return
-    hi! cppSkyKeywords guifg=#89ddff
+    gleam = [[
+      syn keyword gleamPubModifier pub
+      syn keyword gleamStorage const let
+      syn match gleamCapsIdent display "\<[A-Z][A-Z0-9_]\+\>"
+      syn keyword gleamSkyKeywords fn case if else panic
+      syn match gleamFuncCall display "\<\h\w*\ze\s*("
 
-    " Preprocessor
-    hi! cInclude guifg=#89ddff
-    hi! cDefine guifg=#bb9af7
-    hi! cPreProc guifg=#89ddff
+      hi def link gleamPubModifier @keyword.modifier
+      hi def link gleamStorage StorageClass
+      hi def link gleamCapsIdent Constant
+      hi def link gleamSkyKeywords Statement
+      hi def link gleamFuncCall Function
+    ]],
+  }
+end
 
-    " Function calls
-    syn match cFuncCall display "\<\h\w*\ze\s*("
-    syn match cMethodCall display "\(\.\|->\)\zs\h\w*\ze\s*("
-    hi! cFuncCall guifg=#7aa2f7
-    hi! cMethodCall guifg=#7aa2f7
-  ]],
-
-  cpp = [[
-    " Constants in Tokyo Night Red (#f7768e)
-    syn match cppCapsIdent display "\<[A-Z][A-Z0-9_]\+\>"
-    hi! cppCapsIdent guifg=#f7768e
-
-    " Storage: const, static, constexpr in purple, NOT italic
-    syn keyword cppStorage const static constexpr
-    hi! cppStorage guifg=#bb9af7 gui=NONE
-
-    " Modifiers in purple italic
-    syn keyword cppModifier public private protected virtual explicit inline volatile
-    hi! cppModifier guifg=#bb9af7 gui=italic cterm=italic
-
-    " Control flow keywords in sky blue
-    syn keyword cppSkyKeywords for while if else do switch case break continue return
-    hi! cppSkyKeywords guifg=#89ddff
-
-    " Preprocessor
-    hi! cInclude guifg=#89ddff
-    hi! cDefine guifg=#bb9af7
-    hi! cPreProc guifg=#89ddff
-
-    " Function calls
-    syn match cFuncCall display "\<\h\w*\ze\s*("
-    syn match cMethodCall display "\(\.\|->\)\zs\h\w*\ze\s*("
-    hi! cFuncCall guifg=#7aa2f7
-    hi! cMethodCall guifg=#7aa2f7
-  ]],
-
-  java = [[
-    " Constants and Enum identifiers in Tokyo Night Red (#f7768e)
-    syn match javaCapsIdent display "\<[A-Z][A-Z0-9_]\+\>"
-    hi! javaCapsIdent guifg=#f7768e
-
-    " Normal variables in Teal/Green (#73daca)
-    syn match javaVarIdent display "\<[a-z][a-zA-Z0-9_]*\>"
-    hi! javaVarIdent guifg=#73daca
-
-    " Modifiers in purple italic
-    syn keyword javaModifier public private protected static final synchronized volatile abstract
-    hi! javaModifier guifg=#bb9af7 gui=italic cterm=italic
-    hi! javaScopeDecl guifg=#bb9af7 gui=italic cterm=italic
-    hi! javaStorageClass guifg=#bb9af7 gui=italic cterm=italic
-
-    " Control flow keywords in sky blue
-    syn keyword javaSkyKeywords for while if else do switch case break continue return
-    hi! javaSkyKeywords guifg=#89ddff
-
-    " Method calls
-    syn match javaMethodCall display "\.\zs\h\w*\ze\s*("
-    hi! javaMethodCall guifg=#7aa2f7
-  ]],
-
-  go = [[
-    " Storage: const & var in purple, NOT italic
-    syn keyword goStorage const var
-    hi! goStorage guifg=#bb9af7 gui=NONE
-
-    " Constants in Tokyo Night Red (#f7768e)
-    syn match goCapsIdent display "\<[A-Z][A-Z0-9_]\+\>"
-    hi! goCapsIdent guifg=#f7768e
-
-    " Control flow in sky blue
-    syn keyword goSkyKeywords func for range if else switch case select return break continue
-    hi! goSkyKeywords guifg=#89ddff
-
-    " Function and method calls
-    syn match goFuncCall display "\<\h\w*\ze\s*("
-    syn match goMethodCall display "\.\zs\h\w*\ze\s*("
-    hi! goFuncCall guifg=#7aa2f7
-    hi! goMethodCall guifg=#7aa2f7
-  ]],
-
-  typescript = [[
-    " Storage: const in purple NOT italic
-    syn keyword tsStorage const
-    syn keyword tsModifier let export import async static public private protected readonly
-    hi! tsStorage guifg=#bb9af7 gui=NONE
-    hi! tsModifier guifg=#bb9af7 gui=italic cterm=italic
-
-    " Constants in Tokyo Night Red (#f7768e)
-    syn match tsCapsIdent display "\<[A-Z][A-Z0-9_]\+\>"
-    hi! tsCapsIdent guifg=#f7768e
-
-    " Control flow in sky blue
-    syn keyword tsSkyKeywords function for of in if else while switch case break continue return
-    hi! tsSkyKeywords guifg=#89ddff
-
-    " Function & method calls
-    syn match tsFuncCall display "\<\h\w*\ze\s*("
-    syn match tsMethodCall display "\.\zs\h\w*\ze\s*("
-    hi! tsFuncCall guifg=#7aa2f7
-    hi! tsMethodCall guifg=#7aa2f7
-  ]],
-
-  javascript = [[
-    " Storage: const in purple NOT italic
-    syn keyword jsStorage const
-    syn keyword jsModifier let export import async static readonly
-    hi! jsStorage guifg=#bb9af7 gui=NONE
-    hi! jsModifier guifg=#bb9af7 gui=italic cterm=italic
-
-    " Constants in Tokyo Night Red (#f7768e)
-    syn match jsCapsIdent display "\<[A-Z][A-Z0-9_]\+\>"
-    hi! jsCapsIdent guifg=#f7768e
-
-    " Control flow in sky blue
-    syn keyword jsSkyKeywords function for of in if else while switch case break continue return
-    hi! jsSkyKeywords guifg=#89ddff
-
-    " Function & method calls
-    syn match jsFuncCall display "\<\h\w*\ze\s*("
-    syn match jsMethodCall display "\.\zs\h\w*\ze\s*("
-    hi! jsFuncCall guifg=#7aa2f7
-    hi! jsMethodCall guifg=#7aa2f7
-  ]],
-
-  python = [[
-    " Constants in Tokyo Night Red (#f7768e)
-    syn match pythonCapsIdent display "\<[A-Z][A-Z0-9_]\+\>"
-    hi! pythonCapsIdent guifg=#f7768e
-
-    " Modifiers in purple italic
-    syn keyword pythonModifier async await self cls
-    hi! pythonModifier guifg=#bb9af7 gui=italic cterm=italic
-
-    " Control flow in sky blue
-    syn keyword pythonSkyKeywords def class for in if elif else while break continue return yield try except finally with as
-    hi! pythonSkyKeywords guifg=#89ddff
-
-    " Function calls
-    syn match pythonFuncCall display "\<\h\w*\ze\s*("
-    hi! pythonFuncCall guifg=#7aa2f7
-  ]],
-
-  gleam = [[
-    " pub in purple italic, const in purple NOT italic
-    syn keyword gleamPubModifier pub
-    syn keyword gleamStorage const
-    syn keyword gleamLetModifier let
-    hi! gleamPubModifier guifg=#bb9af7 gui=italic cterm=italic
-    hi! gleamStorage guifg=#bb9af7 gui=NONE
-    hi! gleamLetModifier guifg=#bb9af7 gui=italic cterm=italic
-
-    " Constants in Tokyo Night Red (#f7768e)
-    syn match gleamCapsIdent display "\<[A-Z][A-Z0-9_]\+\>"
-    hi! gleamCapsIdent guifg=#f7768e
-
-    " Control flow in sky blue
-    syn keyword gleamSkyKeywords fn case if else panic
-    hi! gleamSkyKeywords guifg=#89ddff
-
-    " Function calls
-    syn match gleamFuncCall display "\<\h\w*\ze\s*("
-    hi! gleamFuncCall guifg=#7aa2f7
-  ]],
-}
+local active_syntax = {}
 
 function M.apply_for_buffer(buf)
   if not vim.api.nvim_buf_is_valid(buf) then return end
   local ft = vim.bo[buf].filetype
   if not ft or ft == "" then return end
 
-  local vim_cmd = syntax_definitions[ft]
+  local vim_cmd = active_syntax[ft]
   if vim_cmd then
     vim.api.nvim_buf_call(buf, function()
       vim.cmd(vim_cmd)
@@ -273,9 +194,9 @@ function M.apply_for_buffer(buf)
 end
 
 function M.setup(p)
+  active_syntax = get_syntax_cmds(p)
   local group = vim.api.nvim_create_augroup("BestThemesSyntax", { clear = true })
 
-  -- Listen for buffer filetype setting, syntax initialization, or buffer entering
   vim.api.nvim_create_autocmd({ "FileType", "Syntax", "BufWinEnter" }, {
     group = group,
     pattern = "*",
@@ -284,7 +205,6 @@ function M.setup(p)
     end,
   })
 
-  -- Immediately apply to all currently existing, loaded buffers
   for _, buf in ipairs(vim.api.nvim_list_bufs()) do
     if vim.api.nvim_buf_is_loaded(buf) then
       M.apply_for_buffer(buf)
