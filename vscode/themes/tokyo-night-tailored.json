@@ -61,10 +61,16 @@
     "enum": "#89ddff",
     "interface": "#89ddff",
     "enumMember": "#ff9e64",
+    "enumMember.declaration": "#ff9e64",
     "enumMember:java": "#ff9e64",
     "enumMember:cpp": "#ff9e64",
     "enumMember:c": "#ff9e64",
+    "enumMember.defaultLibrary": "#ff9e64",
+    "enumMember.defaultLibrary:rust": "#ff9e64",
     "enumMember:rust": "#ff9e64",
+    "enumMember.declaration:rust": "#ff9e64",
+    "enumMember.public:rust": "#ff9e64",
+    "enumMember.declaration.public:rust": "#ff9e64",
     "enumMember:go": "#ff9e64",
     "function": "#7aa2f7",
     "method": "#7aa2f7",
@@ -82,7 +88,58 @@
     "comment": {
       "foreground": "#565f89",
       "fontStyle": "italic"
-    }
+    },
+    "enumMember:zig": "#ff9e64",
+    "variable.constant:zig": "#e0af68",
+    "property.readonly:zig": "#e0af68",
+    "variable.declaration.readonly:zig": "#e0af68",
+    "variable.readonly.declaration:zig": "#e0af68",
+    "variable.declaration.constant:zig": "#e0af68",
+    "variable.constant.declaration:zig": "#e0af68",
+    "property.constant:zig": "#e0af68",
+    "property.declaration.readonly:zig": "#e0af68",
+    "property.readonly.declaration:zig": "#e0af68",
+    "constant:zig": "#e0af68",
+    "constant.declaration:zig": "#e0af68",
+    "constant.readonly:zig": "#e0af68",
+    "variable.static:zig": "#e0af68",
+    "variable.declaration.static:zig": "#e0af68",
+    "variable.static.declaration:zig": "#e0af68",
+    "variable.readonly.static:zig": "#e0af68",
+    "variable.static.readonly:zig": "#e0af68",
+    "variable.static": "#e0af68",
+    "variable.declaration.static": "#e0af68",
+    "variable.static.declaration": "#e0af68",
+    "property.static:zig": "#e0af68",
+    "property.declaration.static:zig": "#e0af68",
+    "property.static": "#e0af68",
+    "type.defaultLibrary:rust": "#89ddff",
+    "struct.defaultLibrary:rust": "#89ddff",
+    "enum.defaultLibrary:rust": "#89ddff",
+    "interface.defaultLibrary:rust": "#89ddff",
+    "decorator:rust": "#89ddff",
+    "selfTypeKeyword:rust": "#89ddff",
+    "type.primitive:rust": "#bb9af7",
+    "type.builtin:rust": "#bb9af7",
+    "const": "#e0af68",
+    "const:rust": "#e0af68",
+    "const.declaration": "#e0af68",
+    "const.declaration:rust": "#e0af68",
+    "builtinType": "#bb9af7",
+    "builtinType:rust": "#bb9af7",
+    "derive": "#89ddff",
+    "derive:rust": "#89ddff",
+    "deriveHelper": "#89ddff",
+    "deriveHelper:rust": "#89ddff",
+    "generic.attribute": "#89ddff",
+    "generic.attribute:rust": "#89ddff",
+    "attribute:rust": "#89ddff",
+    "builtinAttribute:rust": "#89ddff",
+    "toolAttribute:rust": "#89ddff",
+    "namespace:rust": "#89ddff",
+    "namespace.attribute:rust": "#89ddff",
+    "generic:rust": "#89ddff",
+    "generic": "#89ddff"
   },
   "colors": {
     "foreground": "#787c99",
@@ -1239,7 +1296,14 @@
     },
     {
       "name": "Java enums",
-      "scope": "constant.other.enum.java",
+      "scope": [
+        "constant.other.enum.java",
+        "constant.other.enum.zig",
+        "variable.other.enummember.zig",
+        "entity.name.variable.enum-member.zig",
+        "entity.name.variable.enum-member.rust",
+        "variable.other.enummember.rust"
+      ],
       "settings": {
         "foreground": "#ff9e64"
       }
@@ -1990,17 +2054,16 @@
     },
     {
       "name": "Rust u/i32, u/i64, etc.",
-      "scope": "entity.name.type.numeric.rust",
+      "scope": [
+        "entity.name.type.numeric.rust",
+        "entity.name.type.primitive.rust",
+        "storage.type.rust",
+        "storage.type.primitive.rust",
+        "storage.type.core.rust"
+      ],
       "settings": {
         "foreground": "#bb9af7",
         "fontStyle": ""
-      }
-    },
-    {
-      "name": "Rust generic",
-      "scope": "meta.generic.rust",
-      "settings": {
-        "foreground": "#c0768e"
       }
     },
     {
@@ -2015,7 +2078,7 @@
       "name": "Rust module",
       "scope": "entity.name.module.rust",
       "settings": {
-        "foreground": "#c0768e"
+        "foreground": "#89ddff"
       }
     },
     {
@@ -2103,15 +2166,6 @@
       "scope": "constant.other.caps.rust",
       "settings": {
         "foreground": "#e0af68"
-      }
-    },
-    {
-      "name": "Rust function parameters",
-      "scope": [
-        "meta.function.definition.rust variable.other.rust"
-      ],
-      "settings": {
-        "foreground": "#e0687a"
       }
     },
     {

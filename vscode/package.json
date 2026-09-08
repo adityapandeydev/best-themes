@@ -2,7 +2,7 @@
   "name": "best-themes-tailored",
   "displayName": "Best Themes",
   "description": "A curated cross-editor theme collection with visual consistency across VS Code, Zed, and Neovim.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "adityapandey",
   "icon": "logo.png",
   "author": "Aditya Pandey",
@@ -32,12 +32,12 @@
       {
         "label": "Best Theme - Tokyo Night Tailored",
         "uiTheme": "vs-dark",
-        "path": "./themes/tokyo-night-enhanced.json"
+        "path": "./themes/tokyo-night-tailored.json"
       },
       {
         "label": "Best Theme - Catppuccin Mocha Tailored",
         "uiTheme": "vs-dark",
-        "path": "./themes/catppuccin-mocha.json"
+        "path": "./themes/catppuccin-mocha-tailored.json"
       }
     ]
   }
