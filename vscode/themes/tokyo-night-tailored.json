@@ -117,7 +117,7 @@
     "struct.defaultLibrary:rust": "#89ddff",
     "enum.defaultLibrary:rust": "#89ddff",
     "interface.defaultLibrary:rust": "#89ddff",
-    "decorator:rust": "#89ddff",
+    "decorator:rust": "#b4befe",
     "selfTypeKeyword:rust": "#89ddff",
     "type.primitive:rust": "#bb9af7",
     "type.builtin:rust": "#bb9af7",
@@ -127,19 +127,19 @@
     "const.declaration:rust": "#e0af68",
     "builtinType": "#bb9af7",
     "builtinType:rust": "#bb9af7",
-    "derive": "#89ddff",
-    "derive:rust": "#89ddff",
-    "deriveHelper": "#89ddff",
-    "deriveHelper:rust": "#89ddff",
-    "generic.attribute": "#89ddff",
-    "generic.attribute:rust": "#89ddff",
-    "attribute:rust": "#89ddff",
-    "builtinAttribute:rust": "#89ddff",
-    "toolAttribute:rust": "#89ddff",
+    "derive": "#b4befe",
+    "derive:rust": "#b4befe",
+    "deriveHelper": "#b4befe",
+    "deriveHelper:rust": "#b4befe",
+    "generic.attribute": "#b4befe",
+    "generic.attribute:rust": "#b4befe",
+    "attribute:rust": "#b4befe",
+    "builtinAttribute:rust": "#b4befe",
+    "toolAttribute:rust": "#b4befe",
     "namespace:rust": "#89ddff",
-    "namespace.attribute:rust": "#89ddff",
-    "generic:rust": "#89ddff",
-    "generic": "#89ddff"
+    "namespace.attribute:rust": "#b4befe",
+    "generic:rust": "#b4befe",
+    "generic": "#b4befe"
   },
   "colors": {
     "foreground": "#787c99",
@@ -2018,7 +2018,7 @@
         "punctuation.definition.attribute.rust"
       ],
       "settings": {
-        "foreground": "#89ddff",
+        "foreground": "#b4befe",
         "fontStyle": "italic"
       }
     },

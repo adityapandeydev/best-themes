@@ -2,7 +2,7 @@
   "name": "best-themes-tailored",
   "displayName": "Best Themes",
   "description": "A curated cross-editor theme collection with visual consistency across VS Code, Zed, and Neovim.",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "publisher": "adityapandey",
   "icon": "logo.png",
   "author": "Aditya Pandey",
