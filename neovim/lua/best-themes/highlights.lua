@@ -151,11 +151,14 @@ function M.apply(p)
   hl("@function.method.call", { fg = p.func })
   hl("@constructor", { fg = p.func })
 
-  -- Types & Structures
+  -- Types, Modules & Structures
   hl("@type", { fg = p.type })
   hl("@type.builtin", { fg = p.type })
   hl("@type.definition", { fg = p.type_name })
   hl("@type.enum.variant", { fg = p.enum_member })
+  hl("@module", { fg = p.type })
+  hl("@module.builtin", { fg = p.type })
+  hl("@namespace", { fg = p.type })
 
   -- Variables, Fields, Parameters
   hl("@variable", { fg = p.variable })
@@ -185,10 +188,14 @@ function M.apply(p)
   hl("@punctuation.bracket", { fg = p.bracket })
   hl("@punctuation.special", { fg = p.keyword })
 
-  -- Comments & Attributes
+  -- Comments & Attributes / Annotations
   hl("@comment", { fg = p.comment, italic = true })
   hl("@comment.documentation", { fg = p.comment_doc, italic = true })
+  hl("@comment.doc", { fg = p.comment_doc, italic = true })
+  hl("@comment.doc.tag", { fg = p.func })
+  hl("@comment.doc.tag.parameter", { fg = p.parameter })
   hl("@attribute", { fg = p.attribute })
+  hl("@attribute.builtin", { fg = p.attribute })
   hl("@annotation", { fg = p.attribute })
 
   -- Markup / HTML / JSX
@@ -219,13 +226,42 @@ function M.apply(p)
   hl("@lsp.type.string", { fg = p.string })
   hl("@lsp.type.number", { fg = p.number })
   hl("@lsp.type.boolean", { fg = p.boolean })
+  hl("@lsp.type.decorator", { fg = p.attribute })
+  hl("@lsp.type.annotation", { fg = p.attribute })
+  hl("@lsp.type.builtinType", { fg = p.keyword })
+  hl("@lsp.type.derive", { fg = p.type })
+  hl("@lsp.type.const", { fg = p.constant })
 
-  -- Modifiers
-  hl("@lsp.mod.readonly", { fg = p.constant })
-  hl("@lsp.mod.constant", { fg = p.constant })
+  -- LSP Modifiers & Typemods (matches VS Code exact rules)
   hl("@lsp.mod.defaultLibrary", { fg = p.variable_special })
+
+  -- Readonly Variables & Properties -> Constant color
   hl("@lsp.typemod.variable.readonly", { fg = p.constant })
+  hl("@lsp.typemod.variable.readonly.static", { fg = p.constant })
+  hl("@lsp.typemod.variable.static.readonly", { fg = p.constant })
+  hl("@lsp.typemod.variable.constant", { fg = p.constant })
   hl("@lsp.typemod.property.readonly", { fg = p.constant })
+  hl("@lsp.typemod.property.readonly.static", { fg = p.constant })
+  hl("@lsp.typemod.property.static.readonly", { fg = p.constant })
+  hl("@lsp.typemod.property.constant", { fg = p.constant })
+
+  -- Protect Types and Classes from falling back to readonly constant styling
+  hl("@lsp.typemod.class.readonly", { fg = p.type })
+  hl("@lsp.typemod.class.static", { fg = p.type })
+  hl("@lsp.typemod.class.readonly.static", { fg = p.type })
+  hl("@lsp.typemod.enum.readonly", { fg = p.type })
+  hl("@lsp.typemod.enum.static", { fg = p.type })
+  hl("@lsp.typemod.enum.readonly.static", { fg = p.type })
+  hl("@lsp.typemod.type.readonly", { fg = p.type })
+  hl("@lsp.typemod.type.defaultLibrary", { fg = p.keyword })
+  hl("@lsp.typemod.struct.readonly", { fg = p.type })
+  hl("@lsp.typemod.interface.readonly", { fg = p.type })
+
+  -- Enum Members (e.g. HttpStatus.OK) -> always enum_member color
+  hl("@lsp.typemod.enumMember.readonly", { fg = p.enum_member })
+  hl("@lsp.typemod.enumMember.readonly.static", { fg = p.enum_member })
+  hl("@lsp.typemod.enumMember.static.readonly", { fg = p.enum_member })
+  hl("@lsp.typemod.enumMember.static", { fg = p.enum_member })
 
   -- Diagnostics
   hl("DiagnosticError", { fg = p.error })

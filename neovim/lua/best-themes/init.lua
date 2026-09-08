@@ -4,17 +4,29 @@ local highlights = require("best-themes.highlights")
 local syntax_support = require("best-themes.syntax_support")
 
 local themes = {
+  ["tokyo-night-tailored"] = function()
+    return require("best-themes.palettes.tokyo-night-tailored")
+  end,
+  ["best-tokyo-night-tailored"] = function()
+    return require("best-themes.palettes.tokyo-night-tailored")
+  end,
   ["tokyo-night-enhanced"] = function()
-    return require("best-themes.palettes.tokyo-night-enhanced")
+    return require("best-themes.palettes.tokyo-night-tailored")
   end,
   ["best-tokyo-night-enhanced"] = function()
-    return require("best-themes.palettes.tokyo-night-enhanced")
+    return require("best-themes.palettes.tokyo-night-tailored")
+  end,
+  ["catppuccin-mocha-tailored"] = function()
+    return require("best-themes.palettes.catppuccin-mocha-tailored")
+  end,
+  ["best-catppuccin-mocha-tailored"] = function()
+    return require("best-themes.palettes.catppuccin-mocha-tailored")
   end,
   ["catppuccin-mocha"] = function()
-    return require("best-themes.palettes.catppuccin-mocha")
+    return require("best-themes.palettes.catppuccin-mocha-tailored")
   end,
   ["best-catppuccin-mocha"] = function()
-    return require("best-themes.palettes.catppuccin-mocha")
+    return require("best-themes.palettes.catppuccin-mocha-tailored")
   end,
 }
 
